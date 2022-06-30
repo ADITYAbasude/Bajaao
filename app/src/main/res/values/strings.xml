@@ -1,0 +1,23 @@
+<resources>
+
+    <!--    App info-->
+    <string name="app_name">Bajaao</string>
+    <string name="app_slogan">Bajaate raho India!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <!-- menu -->
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="your_library">Your library</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>

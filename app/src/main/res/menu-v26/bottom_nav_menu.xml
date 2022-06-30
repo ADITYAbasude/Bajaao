@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home_24"
+        android:iconTint="@drawable/item_check"
+        android:onClick="homeClick"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/search_24"
+        android:iconTint="@drawable/item_check"
+        android:onClick="searchClick"
+        android:title="@string/search" />
+
+    <item
+        android:id="@+id/your_library"
+        android:icon="@drawable/music_library_24"
+        android:iconTint="@drawable/item_check"
+        android:onClick="yourLibraryClick"
+        android:title="@string/your_library" />
+
+    <item
+        android:id="@+id/offlineSongs"
+        android:icon="@drawable/offline"
+        android:onClick="goOfflineMode"
+        android:title="Offline" />
+
+</menu>

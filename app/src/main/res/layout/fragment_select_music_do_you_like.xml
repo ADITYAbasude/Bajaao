@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundPrimary"
+    tools:context=".fragments.SelectMusicDoYouLike">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/hindiSongs"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/round_textview"
+        android:backgroundTint="@color/orange"
+        android:gravity="center"
+        android:text="Hindi"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/englishSongs"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/round_textview"
+        android:backgroundTint="@color/navy"
+        android:gravity="center"
+        android:text="English"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/teluguSongs"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/round_textview"
+        android:backgroundTint="@color/purple"
+        android:gravity="center"
+        android:text="Telugu"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hindiSongs"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/punjabiSongs"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/round_textview"
+        android:backgroundTint="@color/blue"
+        android:gravity="center"
+        android:text="Punjabi"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/englishSongs" />
+
+    <ImageView
+        android:id="@+id/hindiSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/check_circle_24"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/hindiSongs"
+        app:layout_constraintEnd_toEndOf="@+id/hindiSongs" />
+
+    <ImageView
+        android:id="@+id/englishSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/check_circle_24"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/englishSongs"
+        app:layout_constraintEnd_toEndOf="@+id/englishSongs" />
+
+    <ImageView
+        android:id="@+id/teluguSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/check_circle_24"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/teluguSongs"
+        app:layout_constraintEnd_toEndOf="@+id/teluguSongs" />
+
+    <ImageView
+        android:id="@+id/punjabiSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/check_circle_24"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/punjabiSongs"
+        app:layout_constraintEnd_toEndOf="@+id/punjabiSongs" />
+
+    <Button
+        android:id="@+id/continueMusicLikePage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/green"
+        android:padding="10dp"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:theme="@style/Button.Green"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="What music do you like? "
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

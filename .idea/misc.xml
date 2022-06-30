@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.121" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/arrow_down.xml" value="0.153" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/check_circle_24.xml" value="0.121" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/custom_background.xml" value="0.121" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/custom_google_signin_button.xml" value="0.121" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/home_24.xml" value="0.141" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.121" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/item_check.xml" value="0.141" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/music_library_24.xml" value="0.141" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/nav_background.xml" value="0.141" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/pause_circle.xml" value="0.1205" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/play_circle.xml" value="0.123" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/round_repeat.xml" value="0.123" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/round_shuffle.xml" value="0.123" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/round_text.xml" value="0.121" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/round_textview.xml" value="0.121" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/signin_button_design.xml" value="0.121" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/skip_next.xml" value="0.153" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/skip_previous.xml" value="0.153" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/activity_home.xml" value="0.2" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/activity_main.xml" value="0.16847826086956522" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/activity_setting.xml" value="0.15726495726495726" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/activity_simple.xml" value="0.16847826086956522" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/activity_splash_screen.xml" value="0.16" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/activity_view_song.xml" value="0.25" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/adapter_songs_list.xml" value="0.33" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/content_home.xml" value="0.15726495726495726" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/fragment_first.xml" value="0.15726495726495726" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/fragment_home.xml" value="0.15527426160337554" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/fragment_log_in_and_sign_up.xml" value="0.14" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/fragment_notifications.xml" value="0.15726495726495726" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/fragment_offline_mode.xml" value="0.25" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/fragment_search.xml" value="0.14572649572649574" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/fragment_second.xml" value="0.15726495726495726" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/fragment_select_music_do_you_like.xml" value="0.22" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/fragment_your_library.xml" value="0.14572649572649574" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/home_fragment.xml" value="0.15726495726495726" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/login_or_signup_activity.xml" value="0.25" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/menu-v26/bottom_nav_menu.xml" value="0.18541666666666667" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/menu/bottom_nav_menu.xml" value="0.15726495726495726" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/menu/nav_menu.xml" value="0.15726495726495726" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.121" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
