@@ -2,7 +2,7 @@
 # Bajaao
 Bajaao is a music platform with an elegant UI and it has both support for offline and online music
 
-### Offline music photos
+### Offline music screenshots
 </br>
 <div>
   <img src="https://user-images.githubusercontent.com/69726226/176685719-218a2292-7b03-463c-8fa7-a3137f275644.jpeg" width="250px" />  
