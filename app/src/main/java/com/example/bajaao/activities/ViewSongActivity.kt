@@ -146,7 +146,7 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener ,
         } else {
             songDataList.shuffle()
             val porterDuffColorFilter = PorterDuffColorFilter(
-                R.color.green,
+                R.color.orange,
                 PorterDuff.Mode.SRC_ATOP
             )
             shuffleTheNextSong.drawable.colorFilter = porterDuffColorFilter
