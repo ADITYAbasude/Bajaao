@@ -2,12 +2,12 @@ package com.example.bajaao.services
 
 import android.app.Service
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.media.MediaPlayer
-import android.media.MediaSession2
 import android.os.Binder
+import android.os.Handler
 import android.os.IBinder
+import android.os.Looper
 import android.support.v4.media.session.MediaSessionCompat
 import androidx.core.app.NotificationCompat
 import com.example.bajaao.R
@@ -15,9 +15,10 @@ import com.example.bajaao.activities.ViewSongActivity
 import com.example.bajaao.receivers.ApplicationClass
 
 class MusicServices : Service() {
-    val myBinder = MyBinder()
+    private val myBinder = MyBinder()
     var mediaPlayer: MediaPlayer? = null
     private lateinit var mediaSession: MediaSessionCompat
+    lateinit var runnable: Runnable
 
     override fun onBind(intent: Intent?): IBinder {
         mediaSession = MediaSessionCompat(this , "Bajaao Song App")
@@ -47,4 +48,16 @@ class MusicServices : Service() {
 
         startForeground(1 , notification)
     }
+
+
+//    fun seekBarSetup(){
+//        runnable = kotlinx.coroutines.Runnable {
+//            songCurrentTime.text =
+//                ViewSongActivity.constantsFunc.convertTime(ViewSongActivity.songPlayer!!.currentPosition.toLong())
+//            songTrack.progress = ViewSongActivity.songPlayer!!.currentPosition.toLong().toInt()
+//            Handler(Looper.getMainLooper()).postDelayed(runnable, 200)
+//        }
+//        Handler(Looper.getMainLooper()).postDelayed(runnable, 0)
+//    }
+
 }

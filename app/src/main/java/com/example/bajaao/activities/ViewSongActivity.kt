@@ -32,7 +32,7 @@ import kotlinx.coroutines.Runnable
 import kotlin.properties.Delegates
 
 
-class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener, ServiceConnection {
+class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener , ServiceConnection {
 
     private lateinit var downTheActivity: ImageButton
     private lateinit var songImage: ImageView
@@ -51,13 +51,11 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener, 
     private var isPlaying: Boolean = true
     private lateinit var runnable: Runnable
 
-    var songIndex by Delegates.notNull<Int>()
+    var songIndex: Int = 0
 
     companion object {
         lateinit var songDataList: ArrayList<OfflineMusicModel>
         private var songPlayer: MediaPlayer? = MusicServices().mediaPlayer
-
-        //        private var songPlayer: MediaPlayer? = null
         private val constantsFunc = ConstantsFunc()
         private var isShuffling: Boolean? = true
         private var musicServices: MusicServices? = null
@@ -88,30 +86,10 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener, 
         songTitle.isSelected = true
         songArtist.isSelected = true
 
-
-        songIndex = intent.extras?.getInt("index", 0)!!
-
         supportActionBar?.hide()
 
-        when (intent?.getStringExtra("class")) {
-            "songAdapter" -> {
-                songDataList = ArrayList()
-                songDataList.addAll(OfflineModeFragment.songList)
-//                createMediaPlayer()
-//                layoutInitializer(songIndex!!)
-//                seekBarInitializer()
 
-            }
-            "shuffleSongList" -> {
-                songDataList = ArrayList()
-                songDataList.addAll(OfflineModeFragment.songList)
-                songDataList.shuffle()
-//                layoutInitializer(songIndex!!)
-//                seekBarInitializer()
-                Toast.makeText(this, "working", Toast.LENGTH_SHORT).show()
-
-            }
-        }
+        createLayout()
 
         play_pause_theSong.setOnClickListener {
             isPlaying = if (isPlaying) {
@@ -128,11 +106,11 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener, 
         songPlayer?.setOnCompletionListener(this)
 
         backSong.setOnClickListener {
-            songIndex = movePreviousSong(songIndex!!)
+            movePreviousSong()
         }
 
         nextSong.setOnClickListener {
-            songIndex = moveNextSong(songIndex!!)
+            moveNextSong()
         }
 
         downTheActivity.setOnClickListener {
@@ -142,14 +120,15 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener, 
         shuffleTheNextSong.setOnClickListener {
             shuffleTheNextSong
         }
-//        shuffleTheSongList()
+
+        shuffleTheSongList()
 
     }
 
     private fun createMediaPlayer() {
         if (songPlayer == null) songPlayer = MediaPlayer()
         songPlayer!!.reset()
-        songPlayer!!.setDataSource(songDataList[songIndex!!].path)
+        songPlayer!!.setDataSource(songDataList[songIndex].path)
         songPlayer!!.prepare()
         play_pause_theSong.setImageResource(R.drawable.pause_circle)
         songPlayer!!.start()
@@ -172,6 +151,27 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener, 
             )
             shuffleTheNextSong.drawable.colorFilter = porterDuffColorFilter
             true
+        }
+    }
+
+    private fun createLayout() {
+        songIndex = intent.getIntExtra("index", 0)
+        when (intent?.getStringExtra("class")) {
+            "songAdapter" -> {
+                songDataList = ArrayList()
+                songDataList.addAll(OfflineModeFragment.songList)
+                createMediaPlayer()
+                layoutInitializer(songIndex)
+                seekBarInitializer()
+            }
+            "shuffleSongList" -> {
+                songDataList = ArrayList()
+                songDataList.addAll(OfflineModeFragment.songList)
+                songDataList.shuffle()
+                createMediaPlayer()
+                layoutInitializer(songIndex)
+                seekBarInitializer()
+            }
         }
     }
 
@@ -210,36 +210,20 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener, 
                                 ColorStateList.valueOf(it.lightVibrantSwatch?.rgb ?: 0)
                             songTrack.thumbTintList =
                                 ColorStateList.valueOf(it.vibrantSwatch?.rgb ?: 0)
-
                         }
-
                     }
                     return false
                 }
-
             })
             .into(songImage)
 
         songTitle.text = songDataList[songIndex].title
         songArtist.text = songDataList[songIndex].artist
         songEndTime.text = constantsFunc.convertTime(songDataList[songIndex].duration)
-
-        createMediaPlayer()
-
-        songTrack.max = songPlayer!!.duration
-
-        runnable = Runnable {
-            songCurrentTime.text =
-                constantsFunc.convertTime(songPlayer!!.currentPosition.toLong())
-            songTrack.progress = songPlayer!!.currentPosition.toLong().toInt()
-            Handler(Looper.getMainLooper()).postDelayed(runnable, 200)
-        }
-        Handler(Looper.getMainLooper()).postDelayed(runnable, 0)
-
     }
 
     private fun seekBarInitializer() {
-
+        songTrack.max = songPlayer!!.duration
         songTrack.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(
                 seekBar: SeekBar?,
@@ -248,7 +232,6 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener, 
             ) {
                 songCurrentTime.text =
                     constantsFunc.convertTime(songPlayer!!.currentPosition.toLong())
-
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -264,46 +247,48 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener, 
             }
 
         })
+
+        runnable = Runnable {
+            songCurrentTime.text =
+                constantsFunc.convertTime(songPlayer!!.currentPosition.toLong())
+            songTrack.progress = songPlayer!!.currentPosition.toLong().toInt()
+            Handler(Looper.getMainLooper()).postDelayed(runnable, 200)
+        }
+        Handler(Looper.getMainLooper()).postDelayed(runnable, 0)
     }
 
-    private fun moveNextSong(songIndex: Int): Int {
-        var index = songIndex
-        if (songDataList.size.minus(1) != index) {
-            ++index
+    private fun moveNextSong() {
+        if (songDataList.size.minus(1) != songIndex) {
+            songIndex++
+            layoutInitializer(songIndex)
             createMediaPlayer()
-            layoutInitializer(index)
             seekBarInitializer()
-            Toast.makeText(this, index.toString(), Toast.LENGTH_SHORT).show()
         } else {
-            index = 0
+            songIndex = 0
+            layoutInitializer(songIndex)
             createMediaPlayer()
-            layoutInitializer(index)
             seekBarInitializer()
-            Toast.makeText(this, index.toString(), Toast.LENGTH_SHORT).show()
         }
-        return index
     }
 
-    private fun movePreviousSong(songIndex: Int): Int {
-        var index = songIndex
-        if (index != 0) {
-            --index
+    private fun movePreviousSong() {
+        if (songIndex != 0) {
+            --songIndex
             createMediaPlayer()
-            layoutInitializer(index)
+            layoutInitializer(songIndex)
             seekBarInitializer()
-
         } else {
-            index = songDataList.size - 1
+            songIndex = songDataList.size - 1
             createMediaPlayer()
-            layoutInitializer(index)
+            layoutInitializer(songIndex)
             seekBarInitializer()
         }
-        Toast.makeText(this, index.toString(), Toast.LENGTH_SHORT).show()
-        return index
+        Toast.makeText(this, songIndex.toString(), Toast.LENGTH_SHORT).show()
+
     }
 
     override fun onCompletion(mp: MediaPlayer?) {
-        songIndex = moveNextSong(songIndex!!)
+        moveNextSong()
     }
 
     override fun onBackPressed() {
@@ -316,10 +301,11 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener, 
     override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
         val binder = service as MusicServices.MyBinder
         musicServices = binder.currentServices()
+        createLayout()
         createMediaPlayer()
-        layoutInitializer(songIndex!!)
+        layoutInitializer(songIndex)
         seekBarInitializer()
-        Toast.makeText(this , songIndex!!.toString() , Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, songIndex.toString(), Toast.LENGTH_SHORT).show()
 //        musicServices!!.showNotification()
     }
 

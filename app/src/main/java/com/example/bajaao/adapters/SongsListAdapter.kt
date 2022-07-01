@@ -1,9 +1,7 @@
 package com.example.bajaao.adapters
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -12,11 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.bajaao.R
-import com.example.bajaao.activities.HomeActivity
 import com.example.bajaao.activities.ViewSongActivity
 import com.example.bajaao.constants.ConstantsFunc
 import com.example.bajaao.databinding.AdapterSongsListBinding
-import com.example.bajaao.fragments.HomeFragment
 import com.example.bajaao.model.OfflineMusicModel
 
 class SongsListAdapter(val context: Context, private val songsList: ArrayList<OfflineMusicModel>) :
@@ -52,7 +48,6 @@ class SongsListAdapter(val context: Context, private val songsList: ArrayList<Of
         Glide.with(context).load(songListData.imageUri)
             .apply(RequestOptions.placeholderOf(R.drawable.default_music_icon).centerCrop())
             .into(holder.offlineSongImage)
-
 
         holder.root.setOnClickListener {
             val intent = Intent(context, viewSongActivity)
