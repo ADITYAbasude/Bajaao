@@ -3,9 +3,8 @@ package com.example.bajaao.activities
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
+import android.content.SharedPreferences
 import android.content.res.ColorStateList
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.media.MediaPlayer
@@ -29,10 +28,9 @@ import com.example.bajaao.fragments.OfflineModeFragment
 import com.example.bajaao.model.OfflineMusicModel
 import com.example.bajaao.services.MusicServices
 import kotlinx.coroutines.Runnable
-import kotlin.properties.Delegates
 
 
-class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener , ServiceConnection {
+class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener, ServiceConnection {
 
     private lateinit var downTheActivity: ImageButton
     private lateinit var songImage: ImageView
@@ -51,14 +49,15 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener ,
     private var isPlaying: Boolean = true
     private lateinit var runnable: Runnable
 
-    var songIndex: Int = 0
 
     companion object {
+        var songIndex: Int = 0
         lateinit var songDataList: ArrayList<OfflineMusicModel>
         private var songPlayer: MediaPlayer? = MusicServices().mediaPlayer
         private val constantsFunc = ConstantsFunc()
-        private var isShuffling: Boolean? = true
+        private var isShuffling: Boolean = false
         private var musicServices: MusicServices? = null
+        private var isRepeating: Boolean = false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,6 +81,7 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener ,
         viewFullSongScrollView = findViewById(R.id.viewFullSongScrollView)
         repeatTheCurrentSong = findViewById(R.id.repeatTheCurrentSong)
         shuffleTheNextSong = findViewById(R.id.shuffleTheNextSong)
+        repeatTheCurrentSong = findViewById(R.id.repeatTheCurrentSong)
 
         songTitle.isSelected = true
         songArtist.isSelected = true
@@ -118,12 +118,17 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener ,
         }
 
         shuffleTheNextSong.setOnClickListener {
-            shuffleTheNextSong
+            shuffleTheSongList()
         }
 
-        shuffleTheSongList()
+        repeatTheCurrentSong.setOnClickListener {
+            repeatTheSpecificSong()
+        }
+
+//        shuffleTheSongList()
 
     }
+
 
     private fun createMediaPlayer() {
         if (songPlayer == null) songPlayer = MediaPlayer()
@@ -136,20 +141,23 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener ,
     }
 
     private fun shuffleTheSongList() {
-        isShuffling = if (isShuffling == true) {
-            val porterDuffColorFilter = PorterDuffColorFilter(
-                R.color.white,
-                PorterDuff.Mode.SRC_ATOP
-            )
-            shuffleTheNextSong.drawable.colorFilter = porterDuffColorFilter
+        isShuffling = if (isShuffling) {
+            shuffleTheNextSong.setImageResource(R.drawable.round_shuffle)
+            songDataList.addAll(OfflineModeFragment.songList)
             false
         } else {
             songDataList.shuffle()
-            val porterDuffColorFilter = PorterDuffColorFilter(
-                R.color.orange,
-                PorterDuff.Mode.SRC_ATOP
-            )
-            shuffleTheNextSong.drawable.colorFilter = porterDuffColorFilter
+            shuffleTheNextSong.setImageResource(R.drawable.purple_round_shuffle)
+            true
+        }
+    }
+
+    private fun repeatTheSpecificSong() {
+        isRepeating = if (isRepeating) {
+            repeatTheCurrentSong.setImageResource(R.drawable.round_repeat)
+            false
+        } else {
+            repeatTheCurrentSong.setImageResource(R.drawable.purple_round_repeat)
             true
         }
     }
@@ -283,12 +291,17 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener ,
             layoutInitializer(songIndex)
             seekBarInitializer()
         }
-        Toast.makeText(this, songIndex.toString(), Toast.LENGTH_SHORT).show()
 
     }
 
     override fun onCompletion(mp: MediaPlayer?) {
-        moveNextSong()
+        if (!isRepeating) {
+            moveNextSong()
+        } else {
+            createMediaPlayer()
+            layoutInitializer(songIndex)
+            seekBarInitializer()
+        }
     }
 
     override fun onBackPressed() {
@@ -305,12 +318,18 @@ class ViewSongActivity : AppCompatActivity(), MediaPlayer.OnCompletionListener ,
         createMediaPlayer()
         layoutInitializer(songIndex)
         seekBarInitializer()
-        Toast.makeText(this, songIndex.toString(), Toast.LENGTH_SHORT).show()
-//        musicServices!!.showNotification()
+        musicServices!!.showNotification()
     }
 
     override fun onServiceDisconnected(name: ComponentName?) {
         musicServices = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+//        val sp: SharedPreferences = getSharedPreferences("lastSong", MODE_PRIVATE)
+//        val edit: SharedPreferences.Editor = sp.edit()
+//        edit.putString("path", songDataList[songIndex].path).apply()
     }
 
 }

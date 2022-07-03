@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import android.support.v4.media.session.MediaSessionCompat
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.example.bajaao.R
 import com.example.bajaao.activities.ViewSongActivity
@@ -21,7 +22,7 @@ class MusicServices : Service() {
     lateinit var runnable: Runnable
 
     override fun onBind(intent: Intent?): IBinder {
-        mediaSession = MediaSessionCompat(this , "Bajaao Song App")
+        mediaSession = MediaSessionCompat(baseContext , "Bajaao Song App")
         return myBinder
     }
 
@@ -32,10 +33,10 @@ class MusicServices : Service() {
     }
 
     fun showNotification() {
-        val notification = NotificationCompat.Builder(this, ApplicationClass.CHANNEL_ID)
-            .setContentTitle(ViewSongActivity.songDataList[0].title)
-            .setContentText(ViewSongActivity.songDataList[0].artist)
-            .setSmallIcon(R.drawable.default_music_icon)
+        val notification = NotificationCompat.Builder(baseContext, ApplicationClass.CHANNEL_ID)
+            .setContentTitle(ViewSongActivity.songDataList[ViewSongActivity.songIndex].title)
+            .setContentText(ViewSongActivity.songDataList[ViewSongActivity.songIndex].artist)
+//            .setSmallIcon(R.drawable.logo)
             .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.default_music_icon))
             .setStyle(androidx.media.app.NotificationCompat.MediaStyle().setMediaSession(mediaSession.sessionToken)) // passing a unique token to reduce a ambiguity rate because same time two or more music app is running.
             .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -45,8 +46,9 @@ class MusicServices : Service() {
             .addAction(R.drawable.pause_circle, "Pause", null)
             .addAction(R.drawable.skip_next, "Next", null)
             .build()
-
-        startForeground(1 , notification)
+        Toast.makeText(this , "working" , Toast.LENGTH_SHORT).show()
+        
+        startForeground(13 , notification)
     }
 
 

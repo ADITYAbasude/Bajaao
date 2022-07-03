@@ -15,8 +15,7 @@
     <color name="backgroundPrimary">#101010</color>
     <color name="statusColor">#000000</color>
     <color name="bottom_nav">#48000000</color>
-    <color name="green">#6200EA</color>
-    <color name="darkGreen">#651BCC</color>
+    <color name="lightPurple">#7A36DA</color>
     <color name="purple">#6200EA</color>
     <color name="navy">#0091EA</color>
     <color name="blue">#304FFE</color>

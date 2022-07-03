@@ -18,7 +18,5 @@ class SimpleActivity : AppCompatActivity() {
         val fragmentTransition = fragmentManager.beginTransaction()
         val loginFragment = LogInAndSignUpFragment()
         fragmentTransition.replace(R.id.fragmentContainerView, loginFragment).commit()
-
-
     }
 }

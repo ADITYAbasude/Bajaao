@@ -58,7 +58,7 @@
                 android:focusable="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/round_shuffle"
-                app:backgroundTint="@color/darkGreen"
+                app:backgroundTint="@color/lightPurple"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -68,7 +68,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_weight="0"
                 android:paddingTop="20dp"
-                android:paddingBottom="50dp" />
+                android:paddingBottom="120dp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>

@@ -128,7 +128,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/green"
+        android:backgroundTint="@color/lightPurple"
         android:padding="10dp"
         android:text="Continue"
         android:textAllCaps="false"

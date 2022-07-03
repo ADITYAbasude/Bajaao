@@ -16,7 +16,7 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+        val user: String? = FirebaseAuth.getInstance().currentUser?.uid
 
         supportActionBar?.hide()
 

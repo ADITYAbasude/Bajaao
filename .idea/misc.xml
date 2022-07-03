@@ -15,6 +15,8 @@
         <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/nav_background.xml" value="0.141" />
         <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/pause_circle.xml" value="0.1205" />
         <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/play_circle.xml" value="0.123" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/purple_round_repeat.xml" value="0.123" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/purple_round_shuffle.xml" value="0.123" />
         <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/round_repeat.xml" value="0.123" />
         <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/round_shuffle.xml" value="0.123" />
         <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/round_text.xml" value="0.121" />
@@ -22,7 +24,8 @@
         <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/signin_button_design.xml" value="0.121" />
         <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/skip_next.xml" value="0.153" />
         <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/skip_previous.xml" value="0.153" />
-        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/activity_home.xml" value="0.2" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/drawable/song_bar.xml" value="0.123" />
+        <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/activity_home.xml" value="0.22" />
         <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/activity_main.xml" value="0.16847826086956522" />
         <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/activity_setting.xml" value="0.15726495726495726" />
         <entry key="..\:/kotlin App development/Bajaao/app/src/main/res/layout/activity_simple.xml" value="0.16847826086956522" />

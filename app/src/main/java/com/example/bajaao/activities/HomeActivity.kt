@@ -1,8 +1,13 @@
 package com.example.bajaao.activities
 
+import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.MotionEvent
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -12,8 +17,12 @@ import com.example.bajaao.fragments.OfflineModeFragment
 import com.example.bajaao.fragments.SearchFragment
 import com.example.bajaao.fragments.YourLibraryFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.core.view.View
 
 class HomeActivity : AppCompatActivity() {
+
+    private lateinit var songBar: ConstraintLayout
+    private lateinit var bottomNav: BottomNavigationView
 
     private var initHomeFragment = false
     private var initSearchFragment = false
@@ -25,8 +34,8 @@ class HomeActivity : AppCompatActivity() {
     private var yourLibraryFragment: YourLibraryFragment? = null
     private var offlineModeFragment: OfflineModeFragment? = null
 
-    private lateinit var bottomNav: BottomNavigationView
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -34,6 +43,7 @@ class HomeActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         bottomNav = findViewById(R.id.bottomNav)
+        songBar = findViewById(R.id.songBar)
 
 
         val bundle = intent.extras
@@ -45,6 +55,23 @@ class HomeActivity : AppCompatActivity() {
                 .addToBackStack("offlineSongList")
                 .commit()
         }
+
+        songBar.setOnTouchListener { v, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Toast.makeText(this , "down" , Toast.LENGTH_SHORT).show()
+                }
+                MotionEvent.ACTION_OUTSIDE -> {
+                    Toast.makeText(this , "outside" , Toast.LENGTH_SHORT).show()
+                }
+            }
+            return@setOnTouchListener true
+        }
+//
+//        val sp: SharedPreferences = getSharedPreferences("lastSong" , MODE_PRIVATE)
+//        val takePath =
+
+
     }
 
 

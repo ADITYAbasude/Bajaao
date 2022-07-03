@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Bajaao" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimary">@color/purple</item>
         <item name="colorPrimaryVariant">@color/backgroundPrimary</item>
         <item name="colorOnPrimary">@color/backgroundPrimary</item>
         <!-- Secondary brand color. -->
@@ -17,7 +17,7 @@
     </style>
 
     <style name="Button.Green" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@color/green</item>
+        <item name="colorAccent">@color/purple</item>
     </style>
 
 </resources>
